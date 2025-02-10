@@ -12,7 +12,7 @@ namespace MCX_Topics
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string selectedFilePath; // Moved to the top for proper scope
+        private string selectedFilePath;
 
         public MainWindow()
         {

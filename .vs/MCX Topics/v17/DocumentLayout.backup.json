@@ -29,6 +29,10 @@
           "SelectedChildIndex": 4,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Window1.xaml.cs",
@@ -38,8 +42,7 @@
               "RelativeToolTip": "MCX Topics\\Window1.xaml.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAmwBwAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T16:10:43.18Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-08T16:10:43.18Z"
             },
             {
               "$type": "Document",
@@ -50,12 +53,7 @@
               "ToolTip": "C:\\Users\\ced\\source\\repos\\MCX Topics\\MCX Topics\\Window1.xaml",
               "RelativeToolTip": "MCX Topics\\Window1.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-08T15:01:44.943Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "WhenOpened": "2025-02-08T15:01:44.943Z"
             },
             {
               "$type": "Document",
@@ -66,8 +64,7 @@
               "ToolTip": "C:\\Users\\ced\\source\\repos\\MCX Topics\\MCX Topics\\MainWindow.xaml",
               "RelativeToolTip": "MCX Topics\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-08T14:21:35.07Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-08T14:21:35.07Z"
             },
             {
               "$type": "Document",
