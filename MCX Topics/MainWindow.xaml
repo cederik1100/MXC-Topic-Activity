@@ -95,6 +95,7 @@
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>
+        
         <ListBox x:Name="ListBoxTopics"
             Background="#dabfff"
             Foreground="White"

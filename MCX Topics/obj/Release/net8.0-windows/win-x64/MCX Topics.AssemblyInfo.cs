@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MCX Topics")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+678d573df5ee552ea70587d8b5d7b3b6aa98177a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6ec96459a64a2bbdaa6b95bf454e04dd79d861e")]
 [assembly: System.Reflection.AssemblyProductAttribute("MCX Topics")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MCX Topics")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -4,6 +4,7 @@ using ClosedXML.Excel;
 using System.IO;
 using System.Data;
 using DocumentFormat.OpenXml.Spreadsheet;
+using System.DirectoryServices;
 
 namespace MCX_Topics
 {
@@ -13,6 +14,8 @@ namespace MCX_Topics
     public partial class MainWindow : Window
     {
         private string selectedFilePath;
+        List<TopicData> topicDataList = new List<TopicData>();
+
 
         public MainWindow()
         {
@@ -111,18 +114,31 @@ namespace MCX_Topics
                         }
                     }
 
+                    ListBoxTopics.Items.Clear();
+                    ListBoxTopics.DisplayMemberPath = "FormattedDisplay";
+
+                    
+
                     // Read data
                     for (int row = 2; row <= worksheet.LastRowUsed().RowNumber(); row++)
                     {
+                        string code = worksheet.Cell(row, 1).GetString();
                         string topic = worksheet.Cell(row, 2).GetString();
                         string description = worksheet.Cell(row, 3).GetString();
+                        string howToUse = worksheet.Cell(row, 4).GetString();
+                        string whenToUse = worksheet.Cell(row, 5).GetString();
+                        string others = worksheet.Cell(row, 6).GetString();
 
+                        TopicData topicData = new TopicData(code, topic, description, howToUse, whenToUse, others);
+
+                        topicDataList.Add(topicData);
                         // Add to ListBoxTopics
-                        ListBoxTopics.Items.Add($"{topic}\nDescription: {description}");
+                        ListBoxTopics.Items.Add(topicData); // Store TopicData object instead of a formatted string
+
                     }
 
                     DataCount.Text = ListBoxTopics.Items.Count.ToString();
-                    MessageBox.Show("Data loaded successfully.");
+                    MessageBox.Show("Data loaded successfully.");   
                 }
             }
             catch (Exception ex)
@@ -130,6 +146,8 @@ namespace MCX_Topics
                 MessageBox.Show("Error reading file: " + ex.Message);
             }
         }
+
+
 
         private void BTSearch_Click(object sender, RoutedEventArgs e)
         {
@@ -141,52 +159,32 @@ namespace MCX_Topics
                 return;
             }
 
-            if (string.IsNullOrEmpty(selectedFilePath) || !File.Exists(selectedFilePath))
+            if (topicDataList == null || topicDataList.Count == 0)
             {
-                MessageBox.Show("File not found or invalid path.");
+                MessageBox.Show("No data loaded. Please upload and check a file first.");
                 return;
             }
 
             try
             {
-                using (var workbook = new XLWorkbook(selectedFilePath))
+                // Perform case-insensitive search in the Topic and Description fields
+                var searchResult = topicDataList
+                    .Where(t => t.Topic.Contains(search, StringComparison.OrdinalIgnoreCase) ||
+                                t.Description.Contains(search, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+
+                // Update ListBox with filtered results
+                ListBoxTopics.Items.Clear();
+                foreach (var topic in searchResult)
                 {
-                    ListBoxTopics.Items.Clear();
-                    bool found = false;
+                    ListBoxTopics.Items.Add(topic);
+                }
 
-                    var worksheet = workbook.Worksheets.FirstOrDefault();
-                    if (worksheet == null)
-                    {
-                        MessageBox.Show("No worksheet found in the file.");
-                        return;
-                    }
+                DataCount.Text = searchResult.Count.ToString();
 
-                    // Search through data
-                    for (int row = 2; row <= worksheet.LastRowUsed().RowNumber(); row++)
-                    {
-                        string topic = worksheet.Cell(row, 2).GetString();
-                        string description = worksheet.Cell(row, 3).GetString();
-                        string howToUse = worksheet.Cell(row, 4).GetString();
-                        string whenToUse = worksheet.Cell(row, 5).GetString();
-                        string others = worksheet.Cell(row, 6).GetString();
-
-                        if (topic.Contains(search, StringComparison.OrdinalIgnoreCase) ||
-                            description.Contains(search, StringComparison.OrdinalIgnoreCase) ||
-                            howToUse.Contains(search, StringComparison.OrdinalIgnoreCase) ||
-                            whenToUse.Contains(search, StringComparison.OrdinalIgnoreCase) ||
-                            others.Contains(search, StringComparison.OrdinalIgnoreCase))
-                        {
-                            ListBoxTopics.Items.Add($"{topic}\nDescription: {description}");
-                            found = true;
-                        }
-                    }
-
-                    if (!found)
-                    {
-                        MessageBox.Show("No matching results found.");
-                    }
-
-                    DataCount.Text = ListBoxTopics.Items.Count.ToString(); // Update count
+                if (searchResult.Count == 0)
+                {
+                    MessageBox.Show("No matching results found.");
                 }
             }
             catch (Exception ex)
@@ -196,6 +194,30 @@ namespace MCX_Topics
         }
 
 
+        public class TopicData
+        {
+            public string Code { get; set; }
+            public string Topic { get; set; }
+            public string Description { get; set; }
+            public string HowToUse { get; set; }
+            public string WhenToUse { get; set; }
+            public string Others { get; set; }
+            
+            public TopicData( string code, string topic, string description, string howToUse, string whenToUse, string others)
+            {
+                   Code = code;
+                   Topic = topic;
+                   Description = description;
+                   HowToUse = howToUse;
+                   WhenToUse = whenToUse;
+                   Others = others;
+            }
+
+            public string FormattedDisplay => $"{Topic}\nDescription: {Description}"; 
+
+
+        }
+
 
         private void BTDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -203,7 +225,7 @@ namespace MCX_Topics
             {
                 ListBoxUploaded.Items.Remove(ListBoxUploaded.SelectedItem);
                 ListBoxTopics.Items.Clear();
-                selectedFilePath = string.Empty; // Clear the path to prevent access to deleted files
+                selectedFilePath = string.Empty; 
             }
             else
             {
@@ -213,47 +235,19 @@ namespace MCX_Topics
 
         private void ListBoxTopics_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            //if (ListBoxTopics.SelectedItem != null)
-            //{
-            //    if (ListBoxTopics.SelectedItem is RowData selectedRow)
-            //    {
-            //        Window1 window1 = new Window1();
-            //        window1.TxtCode.Text = selectedRow.Code;
-            //        window1.TxtTopic.Text = selectedRow.Topic;
-            //        window1.TxtDecription.Text = selectedRow.Description;
-            //        window1.TxtHowToUse.Text = selectedRow.HowToUse;
-            //        window1.TxtWhenToUse.Text = selectedRow.WhenToUse;
-            //        window1.TxtOthers.Text = selectedRow.Others;
-            //        window1.Show();
-            //    }
-            //}
-            
-        }
-
-        public class RowData
-        {
-            public string Code { get; set; }
-            public string Topic { get; set; }
-            public string Description { get; set; }
-            public string HowToUse { get; set; }
-            public string WhenToUse { get; set; }
-            public string Others { get; set; }
-
-            public RowData(string code, string topic, string description, string howToUse, string whenToUse, string others)
+            if (ListBoxTopics.SelectedItem is TopicData selectedRow)
             {
-                Code = code;
-                Topic = topic;
-                Description = description;
-                HowToUse = howToUse;
-                WhenToUse = whenToUse;
-                Others = others;
-            }
-
-            public override string ToString()
-            {
-                return $"Topic: {Topic}\nDescription: {Description}";
+                Window1 window1 = new Window1();
+                window1.TxtCode.Text = selectedRow.Code;
+                window1.TxtTopic.Text = selectedRow.Topic;
+                window1.TxtDecription.Text = selectedRow.Description;
+                window1.TxtHowToUse.Text = selectedRow.HowToUse;
+                window1.TxtWhenToUse.Text = selectedRow.WhenToUse;
+                window1.TxtOthers.Text = selectedRow.Others;
+                window1.Show();
             }
         }
+
 
         private void BTClose_Click(object sender, RoutedEventArgs e)
         {

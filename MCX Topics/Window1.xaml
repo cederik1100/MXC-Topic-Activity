@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MCX_Topics"
         mc:Ignorable="d"
-        Title="Window1" Height="454" Width="837" ResizeMode="NoResize">
+        Title="Window1" Height="524" Width="837" ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Template">
@@ -43,7 +43,7 @@
 
         <Rectangle Grid.ColumnSpan="3" Fill="#a260ff" Grid.RowSpan="2"/>
         <Image Grid.Row="1" Height="75" Margin="12,10,12,12"  Width="75" Source="/topics.png"/>
-        <Rectangle Grid.Column="1" Fill="#dabfff" HorizontalAlignment="Center" Height="285" Grid.Row="2" Stroke="Black" VerticalAlignment="Center" Width="568"/>
+        <Rectangle Grid.Column="1" Fill="#dabfff" HorizontalAlignment="Center" Height="371" Grid.Row="2" Stroke="Black" VerticalAlignment="Center" Width="568"/>
 
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="Code:" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="60,50,0,0"/>
         <TextBlock Name="TxtCode" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="150,50,0,0" Width="100" FontWeight="Bold" FontSize="14"/>
@@ -51,19 +51,19 @@
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="Topic:" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="60,100,0,0"/>
         <TextBlock Name="TxtTopic" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="150,100,0,0" Width="100"/>
 
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="60,130,0,0"/>
-        <TextBlock Name="TxtDecription" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="150,130,0,0" Width="370"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="60,145,0,0"/>
+        <TextBlock Name="TxtDecription" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="150,145,0,0" Width="370"/>
 
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="How to use:" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="60,160,0,0"/>
-        <TextBlock Name="TxtHowToUse" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="150,160,0,0" Width="370"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="How to use:" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="60,190,0,0"/>
+        <TextBlock Name="TxtHowToUse" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="150,190,0,0" Width="370"/>
 
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="When to use:" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="60,190,0,0"/>
-        <TextBlock Name="TxtWhenToUse" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="150,190,0,0" Width="370"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="When to use:" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="60,235,0,0"/>
+        <TextBlock Name="TxtWhenToUse" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="150,235,0,0" Width="370"/>
 
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="Others:" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="60,220,0,0"/>
-        <TextBlock Name="TxtOthers" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="150,220,0,0" Width="370"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="Others:" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="60,280,0,0"/>
+        <TextBlock Name="TxtOthers" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" Foreground="#a260ff" Margin="150,280,0,0" Width="370"/>
 
-        <Button Name="BTClose" Content="Close" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="476,257,0,0" Height="30" Width="88" Click="BTClose_Click" Grid.Column="1" Grid.Row="2"/>
+        <Button Name="BTClose" Content="Close" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="470,341,0,0" Height="30" Width="88" Click="BTClose_Click" Grid.Column="1" Grid.Row="2"/>
 
     </Grid>
 </Window>
